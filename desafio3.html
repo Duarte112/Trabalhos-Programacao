@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antes e Depois</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        button {
+            font-size: 16px;
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Antes e Depois</h1>
+
+    <button onclick="mostrarAntecessorESucessor()">Antecessor e Sucessor</button>
+
+    <script>
+        function mostrarAntecessorESucessor() {
+            var numero = prompt("Digite um número inteiro qualquer:");
+
+            if (numero !== null && !isNaN(numero) && Number.isInteger(Number(numero))) {
+                numero = parseInt(numero);
+                var antecessor = numero - 1;
+                var sucessor = numero + 1;
+
+                alert("Antes de " + numero + ", temos o número " + antecessor + ".\nDepois de " + numero + ", temos o número " + sucessor + ".");
+            } else {
+                alert("Por favor, digite um número inteiro válido.");
+            }
+        }
+    </script>
+
+</body>
+</html>

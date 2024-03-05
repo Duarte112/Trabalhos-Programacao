@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculando o Troco</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        button {
+            font-size: 16px;
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Calculando o Troco</h1>
+
+    <button onclick="calcularTroco()">Comprar Produto</button>
+
+    <script>
+        function calcularTroco() {
+            var produto = prompt("Qual é o nome do produto que você está comprando?");
+            
+            if (produto !== null) {
+                var precoProduto = parseFloat(prompt("Quanto custa o produto " + produto + "?"));
+
+                if (!isNaN(precoProduto)) {
+                    var dinheiroCliente = parseFloat(prompt("Quanto dinheiro você deu para pagar o produto " + produto + "?"));
+
+                    if (!isNaN(dinheiroCliente) && dinheiroCliente >= precoProduto) {
+                        var troco = dinheiroCliente - precoProduto;
+
+                        alert("Você comprou " + produto + " que custou R$" + precoProduto.toFixed(2) + ".\nDeu R$" + dinheiroCliente.toFixed(2) + " em dinheiro e vai receber R$" + troco.toFixed(2) + " de troco. Volte sempre!");
+                    } else {
+                        alert("Por favor, digite um valor válido para o dinheiro dado pelo cliente.");
+                    }
+                } else {
+                    alert("Por favor, digite um valor válido para o preço do produto.");
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
