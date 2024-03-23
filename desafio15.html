@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food&Eat Menu</title>
+</head>
+<body>
+
+<!-- View (Visualização) -->
+<h1>Food&Eat Menu</h1>
+<div id="menu"></div>
+<br>
+<label for="nome">Nome:</label>
+<input type="text" id="nome">
+<label for="preco">Preço:</label>
+<input type="text" id="preco">
+<label for="referencia">Referência:</label>
+<input type="text" id="referencia">
+<label for="categoria">Categoria:</label>
+<input type="text" id="categoria">
+<button onclick="adicionarHamburguer()">Adicionar Hambúrguer</button>
+
+<script>
+    // Model (Modelo)
+    let hamburgueres = [
+        { nome: "Chico Fininho", preco: "5€", referencia: "1", category: "Light" },
+        { nome: "Ganhei a lotaria", preco: "15€", referencia: "2", category: "Gordo" },
+        { nome: "Popey come os espinafres", preco: "7€", referencia: "3", category: "Veggi" }
+    ];
+
+    // View (Visualização)
+    function exibirMenu() {
+        let menuDiv = document.getElementById("menu");
+        menuDiv.innerHTML = "";
+
+        hamburgueres.forEach(hamburguer => {
+            let itemDiv = document.createElement("div");
+            itemDiv.innerHTML = `
+                <p><strong>Nome:</strong> ${hamburguer.nome}</p>
+                <p><strong>Preço:</strong> ${hamburguer.preco}</p>
+                <p><strong>Referência:</strong> ${hamburguer.referencia}</p>
+                <p><strong>Categoria:</strong> ${hamburguer.category}</p>
+                <hr>
+            `;
+            menuDiv.appendChild(itemDiv);
+        });
+    }
+
+    // Controller (Controlador)
+    function adicionarHamburguer() {
+        let nome = document.getElementById("nome").value;
+        let preco = document.getElementById("preco").value;
+        let referencia = document.getElementById("referencia").value;
+        let categoria = document.getElementById("categoria").value;
+
+        if (nome && preco && referencia && categoria) {
+            hamburgueres.push({ nome, preco, referencia, category: categoria });
+            exibirMenu();
+            // Limpar os campos de entrada após adicionar o hambúrguer
+            document.getElementById("nome").value = "";
+            document.getElementById("preco").value = "";
+            document.getElementById("referencia").value = "";
+            document.getElementById("categoria").value = "";
+        } else {
+            alert("Por favor, preencha todos os campos.");
+        }
+    }
+
+    // Inicialização
+    exibirMenu();
+</script>
+
+</body>
+</html>
